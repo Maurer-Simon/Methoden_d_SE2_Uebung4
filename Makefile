@@ -1,8 +1,8 @@
 
 all: prototyp4
 
-prototyp4: main.o hero.o character.o item.o npc.o fighter.o sorcerer.o
-	g++ -o prototyp4 main.o hero.o character.o item.o npc.o fighter.o sorcerer.o -Werror
+prototyp4: main.o hero.o character.o item.o fighter.o sorcerer.o
+	g++ -o prototyp4 main.o hero.o character.o item.o fighter.o sorcerer.o -Werror
 
 main.o: main.cpp
 	g++ -c main.cpp -Werror
@@ -15,9 +15,6 @@ character.o: character.cpp character.h
 
 item.o: item.cpp item.h
 	g++ -c item.cpp -Werror
-
-npc.o: npc.cpp npc.h
-	g++ -c npc.cpp -Werror
 
 fighter.o: fighter.cpp fighter.h
 	g++ -c fighter.cpp -Werror

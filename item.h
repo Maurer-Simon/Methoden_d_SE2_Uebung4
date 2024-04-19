@@ -24,8 +24,7 @@ public:
         }
     }
 
-    ~Item() {
-    };
+    ~Item();
 
     // Function to get the value of the item
     int getWorth() const {

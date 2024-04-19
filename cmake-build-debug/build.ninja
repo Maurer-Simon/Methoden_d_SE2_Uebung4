@@ -73,12 +73,6 @@ build CMakeFiles/uebung1.dir/character.cpp.obj: CXX_COMPILER__uebung1_unscanned_
   OBJECT_DIR = CMakeFiles\uebung1.dir
   OBJECT_FILE_DIR = CMakeFiles\uebung1.dir
 
-build CMakeFiles/uebung1.dir/npc.cpp.obj: CXX_COMPILER__uebung1_unscanned_Debug D$:/Programming/CPP$ Programming/Methoden_d_SE2_Uebung4/npc.cpp || cmake_object_order_depends_target_uebung1
-  DEP_FILE = CMakeFiles\uebung1.dir\npc.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\uebung1.dir
-  OBJECT_FILE_DIR = CMakeFiles\uebung1.dir
-
 build CMakeFiles/uebung1.dir/sorcerer.cpp.obj: CXX_COMPILER__uebung1_unscanned_Debug D$:/Programming/CPP$ Programming/Methoden_d_SE2_Uebung4/sorcerer.cpp || cmake_object_order_depends_target_uebung1
   DEP_FILE = CMakeFiles\uebung1.dir\sorcerer.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -99,7 +93,7 @@ build CMakeFiles/uebung1.dir/fighter.cpp.obj: CXX_COMPILER__uebung1_unscanned_De
 #############################################
 # Link the executable uebung1.exe
 
-build uebung1.exe: CXX_EXECUTABLE_LINKER__uebung1_Debug CMakeFiles/uebung1.dir/main.cpp.obj CMakeFiles/uebung1.dir/hero.cpp.obj CMakeFiles/uebung1.dir/item.cpp.obj CMakeFiles/uebung1.dir/character.cpp.obj CMakeFiles/uebung1.dir/npc.cpp.obj CMakeFiles/uebung1.dir/sorcerer.cpp.obj CMakeFiles/uebung1.dir/fighter.cpp.obj
+build uebung1.exe: CXX_EXECUTABLE_LINKER__uebung1_Debug CMakeFiles/uebung1.dir/main.cpp.obj CMakeFiles/uebung1.dir/hero.cpp.obj CMakeFiles/uebung1.dir/item.cpp.obj CMakeFiles/uebung1.dir/character.cpp.obj CMakeFiles/uebung1.dir/sorcerer.cpp.obj CMakeFiles/uebung1.dir/fighter.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\uebung1.dir

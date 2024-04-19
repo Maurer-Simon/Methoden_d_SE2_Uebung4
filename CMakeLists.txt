@@ -11,7 +11,6 @@ add_executable(uebung1 main.cpp
         character.h
         character.cpp
         RandomUtil.h
-        npc.cpp
         npc.h
         sorcerer.cpp
         sorcerer.h

@@ -2,6 +2,18 @@
 #include <iostream>
 #include "hero.h"
 
+// Constructor
+Hero::Hero(const std::string& name, int health, int gold, int armor, int magicResistance)
+        : Character(name, health, gold, armor, magicResistance) {
+
+    for (int i = 0; i < inventorySize; i++) {
+        items[i] = nullptr;
+    }
+    for (int i = 0; i < equipmentSize; i++){
+        equip[i] = nullptr;
+    }
+};
+
 // The hero attacks a specified enemy and inflicts random damage between 5 and 15 health points.
 void Hero::attack(Character* enemy)
 {
@@ -55,8 +67,51 @@ bool Hero::fight(Character* enemy)
     return false;
 }
 
+// Getter for item in equipment by index
+std::shared_ptr<Item> Hero::getEquip(int index) {
+    if (index < 0 || index > 1) {
+        throw InvalidIndexException("Hero::getGear(): Invalid index");
+    }
+    return equip[index];
+}
+
+// Get size of equipment
+int Hero::getEquipmentSize() {
+    return equipmentSize;
+}
+
+// Adds an item to the hero's equipment.
+// Returns the index of the added item or -1 if there is no more space available.
+int Hero::addEquipmentItem(std::shared_ptr<Item> item)
+{
+    for (int i = 0; i < equipmentSize; i++)
+    {
+        if (equip[i] == nullptr)
+        {
+            equip[i] = item;
+            return i;
+        }
+    }
+    throw GearFullException("Hero::addEquipmentItem(): Full gear");
+}
+
+// Removes an item from the hero's equipment based on the specified slot.
+// Returns the removed item or an invalid item if the slot is invalid.
+std::shared_ptr<Item> Hero::removeEquipmentItem(int slot){
+    std::shared_ptr<Item> tmp;
+    if (slot < 0 || slot >= equipmentSize) {
+        throw InvalidIndexException("Hero::removeEquipmentItem(): Invalid index");
+    } else if (equip[slot]) {
+        tmp = equip[slot];
+        equip[slot] = nullptr;
+        return tmp;
+    } else {
+        throw InvalidItemException("Hero::removeEquipmentItem(): Invalid item");
+    }
+};
+
 // Retrieves a random loot item from a defeated enemy.
-Item* Hero::retrieveRandomLoot(Character* enemy) {
+std::shared_ptr<Item> Hero::retrieveRandomLoot(Character* enemy) {
     // Get a random item from the defeated enemy
     int maxCount = -1;
     for (int i = 0; i < enemy->getInventorySize(); i++)
@@ -72,41 +127,11 @@ Item* Hero::retrieveRandomLoot(Character* enemy) {
 
     int random = RandomUtil::generateRandomInt(0,maxCount);
 
-    Item* randomItem = enemy->getItem(random);
+    std::shared_ptr<Item> randomItem = enemy->getItem(random);
     enemy->removeInventoryItem(random);
 
     return randomItem;
 }
-
-// Adds an item to the hero's equipment.
-// Returns the index of the added item or -1 if there is no more space available.
-int Hero::addEquipmentItem(Item* item)
-{
-    for (int i = 0; i < equipmentSize; i++)
-    {
-        if (equip[i] == nullptr)
-        {
-            equip[i] = item;
-            return i;
-        }
-    }
-    throw GearFullException("Hero::addEquipmentItem(): Full gear");
-}
-
-// Removes an item from the hero's equipment based on the specified slot.
-// Returns the removed item or an invalid item if the slot is invalid.
-Item* Hero::removeEquipmentItem(int slot){
-    Item* tmp;
-    if (slot < 0 || slot >= equipmentSize) {
-        throw InvalidIndexException("Hero::removeEquipmentItem(): Invalid index");
-    } else if (equip[slot]) {
-        tmp = equip[slot];
-        equip[slot] = nullptr;
-        return tmp;
-    } else {
-        throw InvalidItemException("Hero::removeEquipmentItem(): Invalid item");
-    }
-};
 
 // Sells an item from the hero's inventory based on the specified index.
 // Increases the hero's gold by the value of the sold item.
@@ -123,3 +148,4 @@ void Hero::sellItem(int index){
         throw InvalidIndexException("Hero::sellItem(): Invalid index");
     }
 }
+

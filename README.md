@@ -1,4 +1,4 @@
-# Methoden_d_SE2_Uebung3
+# Methoden_d_SE2_Uebung4
 
 This project involves creating a simple text-based game or simulation in C++. It focuses on working with multiple header files, which define structures and function prototypes, and potentially using makefiles for compilation. The project introduces concepts such as pointers, structures, functions, and control structures like loops and conditional statements in C++.
 

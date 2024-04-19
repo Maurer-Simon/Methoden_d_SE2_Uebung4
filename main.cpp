@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "character.h"
 #include "hero.h"
 #include "fighter.h"
@@ -12,18 +14,18 @@ int main() {
 
         // Charakter/Angreifer1 wird erstellt und initialisiert
         Fighter angreifer1("Matthias", 100, 50, 3);
-        angreifer1.addInventoryItem(new Item("Rubin", 50));
-        angreifer1.addInventoryItem(new Item("Dolch", 25));
-        angreifer1.addInventoryItem(new Item("Armbrust", 280));
+        angreifer1.addInventoryItem(std::make_shared<Item>("Rubin", 50));
+        angreifer1.addInventoryItem(std::make_shared<Item>("Dolch", 25));
+        angreifer1.addInventoryItem(std::make_shared<Item>("Armbrust", 280));
 
         std::cout << std::endl;
 
         // Charakter/Angreifer2 wird erstellt und initialisiert
         Sorcerer angreifer2("Pascal", 100, 85, 2);
         // Jedem Angreifer werden 3 Items zugewiesen
-        angreifer2.addInventoryItem(new Item("Diamant", 780));
-        angreifer2.addInventoryItem(new Item("Schwert", 450));
-        angreifer2.addInventoryItem(new Item("Schild", 10));
+        angreifer2.addInventoryItem(std::make_shared<Item>("Diamant", 780));
+        angreifer2.addInventoryItem(std::make_shared<Item>("Schwert", 450));
+        angreifer2.addInventoryItem(std::make_shared<Item>("Schild", 10));
 
         std::cout << std::endl;
 
@@ -49,7 +51,7 @@ int main() {
 
         std::cout << std::endl;
 
-        hero.removeEquipmentItem(5); // Test Exception
+        hero.removeEquipmentItem(0); // Test Exception
 
     } catch(std::exception& e) {
         std::cout << "\nCaught exception in main: " << e.what() << std::endl;
